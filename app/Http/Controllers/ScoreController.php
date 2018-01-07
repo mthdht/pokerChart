@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Score;
 
 class ScoreController extends Controller
 {
@@ -13,7 +14,7 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        //
+        return \Auth::user()->scores;
     }
 
     /**
