@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+    * Get the score(s) for the user.
+    */
+    public function scores()
+    {
+        return $this->hasMany('App\Score');
+    }
 }
