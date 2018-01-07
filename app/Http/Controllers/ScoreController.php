@@ -34,7 +34,7 @@ class ScoreController extends Controller
      */
     public function create()
     {
-        //
+        return view('scores.create');
     }
 
     /**
