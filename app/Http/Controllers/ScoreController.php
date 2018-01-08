@@ -81,9 +81,12 @@ class ScoreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ScoreRequest $request, $id)
     {
-        //
+        $score = Score::findOrFail($id);
+        $score->fill($request->all());
+        \Auth::user()->scores()->save($score);
+        return redirect(route('scores.show', ['id' => $id]));
     }
 
     /**
