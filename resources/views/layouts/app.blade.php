@@ -37,7 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li ><a href="#">Classement</a></li>
-                        <li ><a href="#">Scores</a></li>
+                        <li ><a href="{{ route('scores.index') }}">Scores</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -78,6 +78,10 @@
                     <div class="panel panel-default">
                         @yield('content')
                     </div>
+                </div>
+
+                <div class="col-md-2">
+                    @yield('sideContent')
                 </div>
             </div>
         </div>
