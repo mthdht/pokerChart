@@ -62,10 +62,15 @@
 
                     <div class="col-md-8">
                         <select class="form-control" onchange="document.getElementById('select').submit();" name="trie">
-                            <option value="all" @if ($_GET['trie'] == 'all')selected @endif>Tous</option>
-                            <option value="win">Victoire</option>
-                            <option value="lost">Défaite</option>
-                            <option>5</option>
+                            <option value="all" @isset($_GET['trie'])
+                            @if ($_GET['trie'] == 'all')selected @endif
+                            @endisset>Tous</option>
+                            <option value="win" @isset($_GET['trie'])
+                            @if ($_GET['trie'] == 'win')selected @endif
+                                    @endisset>Victoire</option>
+                            <option value="lost" @isset($_GET['trie'])
+                            @if ($_GET['trie'] == 'lost')selected @endif
+                                    @endisset>Défaite</option>
                         </select>
                     </div>
                 </div>
