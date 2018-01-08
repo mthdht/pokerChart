@@ -12,11 +12,11 @@
         @endif
 
         <div class="rapid row">
-            <div class="col-md-3">
+            <div class="col-xs-6 col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Dernier jeu
-                        <i class="fa fa-2x fa-arrow-circle-o-right pull-right" aria-hidden="true"></i>
+                        <a href=""><i class="fa fa-2x fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
                     </div>
 
                     <div class="panel-body">
@@ -36,11 +36,11 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xs-6 col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Voir Stats
-                        <i class="fa fa-2x fa-arrow-circle-o-right pull-right" aria-hidden="true"></i>
+                        <a href=""><i class="fa fa-2x fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
                     </div>
 
                     <div class="panel-body">
@@ -60,11 +60,11 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xs-6 col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Voir Stats
-                        <i class="fa fa-2x fa-arrow-circle-o-right pull-right" aria-hidden="true"></i>
+                        <a href=""><i class="fa fa-2x fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
                     </div>
 
                     <div class="panel-body">
@@ -84,11 +84,11 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-xs-6 col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Voir Stats
-                        <i class="fa fa-2x fa-arrow-circle-o-right pull-right" aria-hidden="true"></i>
+                        <a href=""><i class="fa fa-2x fa-arrow-circle-o-right pull-right" aria-hidden="true"></i></a>
                     </div>
 
                     <div class="panel-body">
