@@ -59,7 +59,7 @@ class ScoreController extends Controller
      */
     public function show($id)
     {
-        //
+        return $score = \Auth::user()->scores()->where('id', '=', $id)->first();
     }
 
     /**
