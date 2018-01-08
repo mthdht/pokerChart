@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Score;
+use App\Http\Requests\ScoreRequest;
 
 class ScoreController extends Controller
 {
@@ -43,9 +43,12 @@ class ScoreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ScoreRequest $request)
     {
-        //
+        $score = new Score($request->all());
+        \Auth::user()->scores()->save($score);
+
+        return redirect(route('scores.index'));
     }
 
     /**
