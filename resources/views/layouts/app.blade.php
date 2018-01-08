@@ -75,18 +75,21 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2">
-                    @yield('sideContent')
+                <div class="col-md-3">
+                    @yield('leftSideContent')
                 </div>
 
-                <div class="col-md-8 ">
+                <div class="col-md-6 ">
                     <div class="panel panel-default">
                         @yield('content')
                     </div>
                 </div>
 
+                <div class="col-md-3">
+                    @yield('rightSideContent')
+                </div>
 
             </div>
         </div>

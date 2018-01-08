@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('sideContent')
+@section('leftSideContent')
     <div class="panel panel-default">
         <div class="panel-heading">
             <a href="{{ route('scores.create') }}" class="btn btn-success">Add score</a>
