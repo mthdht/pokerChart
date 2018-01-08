@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="col-xs-5 container">
-                <a href="" class="btn btn-warning ">Editer</a>
+                <a href="{{ route('scores.edit', ['id' => $score->id]) }}" class="btn btn-warning ">Editer</a>
                 <form method="POST" action="{{ route('scores.destroy', ['id' => $score->id]) }}">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
