@@ -5,7 +5,8 @@
     <h2 class="panel-heading "><span class="text-muted"><b>Edit your score !</b></span> </h2>
 
     <div class="panel-body">
-        <form class="form-horizontal" method="POST" action="{{ route('scores.store') }}">
+        <form class="form-horizontal" method="POST" action="{{ route('scores.update', ['id' => $score->id]) }}">
+            {{ method_field('PUT') }}
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('buyIn') ? ' has-error' : '' }}">
