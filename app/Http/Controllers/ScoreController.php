@@ -24,6 +24,19 @@ class ScoreController extends Controller
      */
     public function index()
     {
+        if (isset($_GET['trie'])) {
+            switch ($_GET['trie']) {
+                case 'all':
+                    return view('scores.index', ['scores' =>\Auth::user()->scores]);
+                    break;
+                case 'win':
+                    return view('scores.index', ['scores' =>\Auth::user()->scores()->whereColumn('gains', '>=', 'mise')->get()]);
+                    break;
+                case 'lost':
+                    return view('scores.index', ['scores' =>\Auth::user()->scores()->whereColumn('gains', '<=', 'mise')->get()]);
+                    break;
+            }
+        }
         return view('scores.index', ['scores' =>\Auth::user()->scores]);
     }
 
