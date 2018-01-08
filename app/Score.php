@@ -23,4 +23,24 @@ class Score extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * Get the score's benefice.
+     *
+     * @return number
+     */
+    public function getBeneficeAttribute()
+    {
+        return $this->gains - $this->mise;
+    }
+
+    /**
+     * Get the score's benefice.
+     *
+     * @return string
+     */
+    public function getRecaveAttribute()
+    {
+        return (int)($this->mise / $this->buyIn);
+    }
 }
