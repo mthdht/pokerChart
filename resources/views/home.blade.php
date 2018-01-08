@@ -111,7 +111,10 @@
 
         <div class="lastGame panel panel-default">
             <div class="panel-heading">
-                <h2 class="panel-title">5 dernières parties</h2>
+                <div class="panel-title text-center">
+                    <b class="col-xs-8 text-muted"> 5 dernières parties </b>
+                    <a href="{{ route('scores.index') }}" class="btn btn-info"> Voir les scores</a>
+                </div>
             </div>
 
             <div class="panel-body">
