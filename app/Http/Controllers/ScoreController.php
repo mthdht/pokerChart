@@ -59,7 +59,8 @@ class ScoreController extends Controller
      */
     public function show($id)
     {
-        return $score = \Auth::user()->scores()->where('id', '=', $id)->first();
+        $score = \Auth::user()->scores()->where('id', '=', $id)->first();
+        return view('scores.show', ['score' => $score]);
     }
 
     /**
@@ -97,6 +98,7 @@ class ScoreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Score::find($id)->delete();
+        return redirect(route('scores.index'));
     }
 }
