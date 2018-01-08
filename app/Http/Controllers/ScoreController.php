@@ -24,7 +24,7 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        return \Auth::user()->scores;
+        return view('scores.index', ['scores' =>\Auth::user()->scores]);
     }
 
     /**
