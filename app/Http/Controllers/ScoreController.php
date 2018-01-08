@@ -70,7 +70,8 @@ class ScoreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $score = \Auth::user()->scores()->where('id', '=', $id)->first();
+        return view('scores.edit', ['score' => $score]);
     }
 
     /**
