@@ -32,12 +32,12 @@
 @endsection
 
 @section('content')
-
-    <h2 class="panel-heading "><span class="text-muted"><b>Tous les scores!</b></span> </h2>
-    <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
+    <div class="panel panel-default">
+        <h2 class="panel-heading "><span class="text-muted"><b>Tous les scores!</b></span> </h2>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                     <tr>
                         <th>ID</th>
                         <th>Buy-In</th>
@@ -48,32 +48,34 @@
                         <th>Date partie</th>
                         <th>Actions</th>
                     </tr>
-                </thead>
-                <tbody>
-                @foreach($scores as $score)
-                    <tr class="{{ $score->benefice >= 0 ? $score->benefice > 0 ? 'success': '' : 'danger' }}">
-                        <td>{{ $score->id }}</td>
-                        <td>{{ $score->buyIn }}</td>
-                        <td>{{ $score->mise }}</td>
-                        <td>{{ $score->gains }}</td>
-                        <td>{{ $score->benefice }}</td>
-                        <td>{{ $score->recave }}</td>
-                        <td>{{ $score->datePartie }}</td>
-                        <td>
-                            <a href="{{ route('scores.show', ['id' => $score->id]) }}" class="btn btn-info ">Voir</a>
-                            <a href="{{ route('scores.edit', ['id' => $score->id]) }}" class="btn btn-warning ">Editer</a>
-                            <form method="POST" action="{{ route('scores.destroy', ['id' => $score->id]) }}">
-                                {{ method_field('DELETE') }}
-                                {{ csrf_field() }}
-                                <button class="btn btn-danger" type="submit">Supprimer</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    @foreach($scores as $score)
+                        <tr class="{{ $score->benefice >= 0 ? $score->benefice > 0 ? 'success': '' : 'danger' }}">
+                            <td>{{ $score->id }}</td>
+                            <td>{{ $score->buyIn }}</td>
+                            <td>{{ $score->mise }}</td>
+                            <td>{{ $score->gains }}</td>
+                            <td>{{ $score->benefice }}</td>
+                            <td>{{ $score->recave }}</td>
+                            <td>{{ $score->datePartie }}</td>
+                            <td>
+                                <a href="{{ route('scores.show', ['id' => $score->id]) }}" class="btn btn-info ">Voir</a>
+                                <a href="{{ route('scores.edit', ['id' => $score->id]) }}" class="btn btn-warning ">Editer</a>
+                                <form method="POST" action="{{ route('scores.destroy', ['id' => $score->id]) }}">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+
 
 @endsection
 

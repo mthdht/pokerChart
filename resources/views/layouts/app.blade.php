@@ -82,9 +82,7 @@
                 </div>
 
                 <div class="col-md-6 ">
-                    <div class="panel panel-default">
-                        @yield('content')
-                    </div>
+                    @yield('content')
                 </div>
 
                 <div class="col-md-3">

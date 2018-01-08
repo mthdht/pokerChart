@@ -2,9 +2,10 @@
 
 @section('content')
 
-    <h2 class="panel-heading">Add New Score ! </h2>
+    <div class="panel panel-default">
+        <h2 class="panel-heading">Add New Score ! </h2>
 
-    <div class="panel-body">
+        <div class="panel-body">
         <form class="form-horizontal" method="POST" action="{{ route('scores.store') }}">
             {{ csrf_field() }}
 
@@ -72,5 +73,6 @@
                 </div>
             </div>
         </form>
+    </div>
     </div>
 @endsection
