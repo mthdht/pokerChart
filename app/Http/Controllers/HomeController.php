@@ -28,7 +28,7 @@ class HomeController extends Controller
         //keep the last five for 5 last game tab and chart
         $lastScores = \Auth::user()->scores()->orderBy('datePartie','desc')->take(5)->get();
         //ordering to be date ascendant
-        $lastScoresOrder = $lastScores->reverse();
+        $lastScoresOrder = $lastScores->sortBy('datePartie');
         //prepare data for 5 last game data chart
         $lastGameData[] = ['date Partie','Bénéfice'];
         foreach ($lastScoresOrder as $key => $score) {
