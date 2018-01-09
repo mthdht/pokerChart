@@ -26,9 +26,7 @@
                             </span>
 
                                 <span class="col-xs-7"><b>
-                                Gains <br>
-                                        {{ \Auth::user()->scores()->orderBy('datePartie','desc')->first()->gains }}
-                                        <i class="fa fa-dollar" aria-hidden="true"></i></b>
+                                Gains <br><i class="fa fa-dollar" aria-hidden="true"></i></b>
                             </span>
                             </div>
                         </div>
@@ -51,7 +49,6 @@
 
                                 <span class="col-xs-7 ">
                                 <b>Bénéfice<br>
-                                    {{ \Auth::user()->scores()->orderBy('datePartie','desc')->first()->gains }}
                                     <i class="fa fa-dollar" aria-hidden="true"></i></b>
                             </span>
                             </div>
@@ -75,7 +72,6 @@
 
                                 <span class="col-xs-7 ">
                                 <b>Ratio<br>
-                                    {{ \Auth::user()->scores()->orderBy('datePartie','desc')->first()->gains }}
                                     <i class="fa fa-dollar" aria-hidden="true"></i></b>
                             </span>
                             </div>
@@ -99,7 +95,6 @@
 
                                 <span class="col-xs-7 ">
                                 <b>Bénéfice<br>
-                                    {{ \Auth::user()->scores()->orderBy('datePartie','desc')->first()->gains }}
                                     <i class="fa fa-dollar" aria-hidden="true"></i></b>
                             </span>
                             </div>
@@ -132,7 +127,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach(\Auth::user()->scores()->orderBy('datePartie', 'desc')->take(5)->get() as $score)
+                            @foreach($lastScores as $score)
                                 <tr class="{{ $score->benefice >= 0 ? $score->benefice > 0 ? 'success': '' : 'danger' }}">
                                     <td>{{ $score->id }}</td>
                                     <td>{{ $score->buyIn }}</td>
@@ -151,4 +146,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('rightSideContent')
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <b class="text-muted">5 last Game</b>
+        </div>
+    </div>
+
+    <div id="myPieChart" class="panel-body"></div>
+</div>
 @endsection
