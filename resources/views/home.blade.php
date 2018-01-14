@@ -190,6 +190,7 @@
     <script type="text/javascript">
         google.charts.load('current', {packages: ['corechart'], 'language': 'fr'});
         google.charts.load('current', {packages: ['line'], 'language': 'fr'});
+        google.charts.load('current', {packages: ['bar'], 'language': 'fr'});
         google.charts.setOnLoadCallback(draw5LastGameBeneficeChart);
         google.charts.setOnLoadCallback(drawWinLostDonutChart);
         google.charts.setOnLoadCallback(drawBeneficesPerGameChart);
@@ -204,8 +205,8 @@
                 'is3D': true,
             };
             // Instantiate and draw the chart.
-            var chart = new google.visualization.ColumnChart(document.getElementById('last5GamesColumnChart'));
-            chart.draw(data, options);
+            var chart = new google.charts.Bar(document.getElementById('last5GamesColumnChart'));
+            chart.draw(data, google.charts.Line.convertOptions(options));
         }
 
         function drawWinLostDonutChart() {
