@@ -33,9 +33,10 @@ class HomeController extends Controller
         foreach ($lastScores as $key => $score) {
                     $lastGameData[++$key] = [$score->datePartie, (int)$score->mise, (int)$score->gains];
         }
-
+        // prepare data for win / lost donut chart
+        $winLostData = [['win/lost', 'value'], ['Mise', $scoresOrder->sum('mise')], ['Gains', $scoresOrder->sum('gains')]];
 
         // return the home view with all datas for display and charts
-        return view('home', ['lastGameData' => json_encode($lastGameData), 'scoresOrder' => $scoresOrder, 'lastScores' => $lastScores]);
+        return view('home', ['lastGameData' => json_encode($lastGameData), 'winLostData'=>json_encode($winLostData), 'scoresOrder' => $scoresOrder, 'lastScores' => $lastScores, ]);
     }
 }
