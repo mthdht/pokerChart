@@ -158,6 +158,16 @@
 
     <div id="last5GamesColumnChart" class="panel-body"></div>
 </div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <b class="text-muted">Win / Lost</b>
+        </div>
+    </div>
+
+    <div id="winLostDonutChart" class="panel-body"></div>
+</div>
 @endsection
 
 @push('scripts')
@@ -165,6 +175,8 @@
     <script type="text/javascript">
         google.charts.load('current', {packages: ['corechart'], 'language': 'fr'});
         google.charts.setOnLoadCallback(draw5LastGameBeneficeChart);
+        google.charts.setOnLoadCallback(drawWinLostDonutChart);
+
         function draw5LastGameBeneficeChart() {
             // Define the chart to be drawn.
             var result = <?php echo $lastGameData?>;
@@ -176,6 +188,19 @@
             };
             // Instantiate and draw the chart.
             var chart = new google.visualization.ColumnChart(document.getElementById('last5GamesColumnChart'));
+            chart.draw(data, options);
+        }
+
+        function drawWinLostDonutChart() {
+            var result = <?php echo $winLostData?>;
+            console.log(result);
+            var data = new google.visualization.arrayToDataTable(result);
+            var options = {
+                'legend': 'bottom',
+                'pieHole': '0.4',
+            };
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.PieChart(document.getElementById('winLostDonutChart'));
             chart.draw(data, options);
         }
 
