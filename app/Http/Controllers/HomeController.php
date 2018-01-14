@@ -25,16 +25,17 @@ class HomeController extends Controller
     {
         // call all scores from database
         $scores = \Auth::user()->scores;
-        //keep the last five for 5 last game tab and chart
-        $lastScores = \Auth::user()->scores()->orderBy('datePartie','desc')->take(5)->get();
         //ordering to be date ascendant
-        $lastScoresOrder = $lastScores->sortBy('datePartie');
+        $scoresOrder = $scores->sortBy('datePartie');
         //prepare data for 5 last game data chart
+        $lastScores = $scoresOrder->take(-5);
         $lastGameData[] = ['date Partie','Bénéfice'];
-        foreach ($lastScoresOrder as $key => $score) {
+        foreach ($lastScores as $key => $score) {
                     $lastGameData[++$key] = [$score->datePartie, (int)$score->benefice];
         }
+
+
         // return the home view with all datas for display and charts
-        return view('home', ['lastGameData' => json_encode($lastGameData), 'lastScores' => $lastScores, 'scores' => $scores]);
+        return view('home', ['lastGameData' => json_encode($lastGameData), 'scoresOrder' => $scoresOrder, 'lastScores' => $lastScores]);
     }
 }
