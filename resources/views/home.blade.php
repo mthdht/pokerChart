@@ -189,6 +189,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {packages: ['corechart'], 'language': 'fr'});
+        google.charts.load('current', {packages: ['line'], 'language': 'fr'});
         google.charts.setOnLoadCallback(draw5LastGameBeneficeChart);
         google.charts.setOnLoadCallback(drawWinLostDonutChart);
         google.charts.setOnLoadCallback(drawBeneficesPerGameChart);
@@ -226,11 +227,10 @@
             var data = new google.visualization.arrayToDataTable(result);
             var options = {
                 'legend': 'bottom',
-                'colors': ['green'],
             };
             // Instantiate and draw the chart.
-            var chart = new google.visualization.LineChart(document.getElementById('beneficesPerGameChart'));
-            chart.draw(data, options);
+            var chart = new google.charts.Line(document.getElementById('beneficesPerGameChart'));
+            chart.draw(data, google.charts.Line.convertOptions(options));
         }
 
     </script>
