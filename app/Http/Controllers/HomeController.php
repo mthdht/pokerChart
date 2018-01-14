@@ -28,10 +28,10 @@ class HomeController extends Controller
         //ordering to be date ascendant
         $scoresOrder = $scores->sortBy('datePartie');
         //prepare data for 5 last game data chart
-        $lastScores = $scoresOrder->take(-5);
-        $lastGameData[] = ['date Partie','Bénéfice'];
+        $lastScores = $scoresOrder->take(-5)->values();
+        $lastGameData[] = ['date Partie', 'mise', 'gains'];
         foreach ($lastScores as $key => $score) {
-                    $lastGameData[++$key] = [$score->datePartie, (int)$score->benefice];
+                    $lastGameData[++$key] = [$score->datePartie, (int)$score->mise, (int)$score->gains];
         }
 
 
