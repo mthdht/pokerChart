@@ -156,6 +156,29 @@
         </div>
     </div>
 
-    <div id="myPieChart" class="panel-body"></div>
+    <div id="last5GamesColumnChart" class="panel-body"></div>
 </div>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart'], 'language': 'fr'});
+        google.charts.setOnLoadCallback(draw5LastGameBeneficeChart);
+        function draw5LastGameBeneficeChart() {
+            // Define the chart to be drawn.
+            var result = <?php echo $lastGameData?>;
+            console.log(result);
+            var data = new google.visualization.arrayToDataTable(result);
+            var options = {
+                'legend': 'bottom',
+                'is3D': true,
+            };
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('last5GamesColumnChart'));
+            chart.draw(data, options);
+        }
+
+    </script>
+@endpush
+
