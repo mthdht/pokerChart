@@ -26,9 +26,7 @@
                             </span>
 
                                 <span class="col-xs-7"><b>
-                                Gains <br>
-                                        {{ \Auth::user()->scores()->orderBy('datePartie','desc')->first()->gains }}
-                                        <i class="fa fa-dollar" aria-hidden="true"></i></b>
+                                Gains <br><i class="fa fa-dollar" aria-hidden="true"></i></b>
                             </span>
                             </div>
                         </div>
@@ -51,7 +49,6 @@
 
                                 <span class="col-xs-7 ">
                                 <b>Bénéfice<br>
-                                    {{ \Auth::user()->scores()->orderBy('datePartie','desc')->first()->gains }}
                                     <i class="fa fa-dollar" aria-hidden="true"></i></b>
                             </span>
                             </div>
@@ -75,7 +72,6 @@
 
                                 <span class="col-xs-7 ">
                                 <b>Ratio<br>
-                                    {{ \Auth::user()->scores()->orderBy('datePartie','desc')->first()->gains }}
                                     <i class="fa fa-dollar" aria-hidden="true"></i></b>
                             </span>
                             </div>
@@ -99,7 +95,6 @@
 
                                 <span class="col-xs-7 ">
                                 <b>Bénéfice<br>
-                                    {{ \Auth::user()->scores()->orderBy('datePartie','desc')->first()->gains }}
                                     <i class="fa fa-dollar" aria-hidden="true"></i></b>
                             </span>
                             </div>
@@ -132,7 +127,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach(\Auth::user()->scores()->orderBy('datePartie', 'desc')->take(5)->get() as $score)
+                            @foreach($lastScores as $score)
                                 <tr class="{{ $score->benefice >= 0 ? $score->benefice > 0 ? 'success': '' : 'danger' }}">
                                     <td>{{ $score->id }}</td>
                                     <td>{{ $score->buyIn }}</td>
@@ -149,6 +144,95 @@
 
                 </div>
             </div>
+
+            <div class="lastGame panel panel-warning">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">
+                        <b class="col-xs-8 ">Bénéfice par partie </b>
+                        <a href="{{ route('scores.index') }}" class="btn btn-info"> Voir les scores</a>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div id="beneficesPerGameChart" class="panel-body"></div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 @endsection
+
+@section('rightSideContent')
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <b class="text-muted">5 last Game</b>
+        </div>
+    </div>
+
+    <div id="last5GamesColumnChart" class="panel-body"></div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <b class="text-muted">Win / Lost</b>
+        </div>
+    </div>
+
+    <div id="winLostDonutChart" class="panel-body"></div>
+</div>
+@endsection
+
+@push('scripts')
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart'], 'language': 'fr'});
+        google.charts.setOnLoadCallback(draw5LastGameBeneficeChart);
+        google.charts.setOnLoadCallback(drawWinLostDonutChart);
+        google.charts.setOnLoadCallback(drawBeneficesPerGameChart);
+
+        function draw5LastGameBeneficeChart() {
+            // Define the chart to be drawn.
+            var result = <?php echo $lastGameData?>;
+            console.log(result);
+            var data = new google.visualization.arrayToDataTable(result);
+            var options = {
+                'legend': 'bottom',
+                'is3D': true,
+            };
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('last5GamesColumnChart'));
+            chart.draw(data, options);
+        }
+
+        function drawWinLostDonutChart() {
+            var result = <?php echo $winLostData?>;
+            console.log(result);
+            var data = new google.visualization.arrayToDataTable(result);
+            var options = {
+                'legend': 'bottom',
+                'pieHole': '0.4',
+            };
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.PieChart(document.getElementById('winLostDonutChart'));
+            chart.draw(data, options);
+        }
+
+        function drawBeneficesPerGameChart() {
+            var result = <?php echo $beneficesPerPartie?>;
+            console.log(result);
+            var data = new google.visualization.arrayToDataTable(result);
+            var options = {
+                'legend': 'bottom',
+                'colors': ['green'],
+            };
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.LineChart(document.getElementById('beneficesPerGameChart'));
+            chart.draw(data, options);
+        }
+
+    </script>
+@endpush
+
