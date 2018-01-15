@@ -1,5 +1,48 @@
 @extends('layouts.app')
 
+@section('leftSideContent')
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <b class="text-muted">Quelques chiffres !</b>
+            </div>
+        </div>
+
+        <div id="" class="panel-body">
+            <table class="table table-responsive table-striped">
+                <tr>
+                    <td><b>Bénéfices totale</b></td>
+                    <td class="{{ $scoresOrder->sum('benefice') >=0 ? 'text-success' : 'text-danger' }} text-center"><b> {{$scoresOrder->sum('benefice')}} <i class="fa fa-eur" aria-hidden="true"></i></b></td>
+                </tr>
+                <tr>
+                    <td><b>Nombres de partie</b></td>
+                    <td class="text-center"><b> {{ $scoresOrder->count() }}</b></td>
+                </tr>
+                <tr>
+                    <td><b>Meilleur gain</b></td>
+                    <td class="text-center"><b>{{ $scoresOrder->max('gains') }} <i class="fa fa-eur" aria-hidden="true"></i></b></td>
+                </tr>
+                <tr>
+                    <td><b>Pire perte</b></td>
+                    <td class="text-center text-danger"><b>{{ $scoresOrder->min('benefice') }} <i class="fa fa-eur" aria-hidden="true"></i></b></td>
+                </tr>
+                <tr>
+                    <td><b>Bénéfice moyen</b></td>
+                    <td class="{{ $scoresOrder->avg('benefice') >=0 ? 'text-success' : 'text-danger' }} text-center"><b>{{ round($scoresOrder->avg('benefice')) }} <i class="fa fa-eur" aria-hidden="true"></i></b></td>
+                </tr>
+                <tr>
+                    <td><b>Parties gagnantes</b></td>
+                    <td class="text-center"><b>{{ $scoresOrder->filter(function ($score, $key) {return $score->benefice > 0;})->count() }} </b> / {{ round($scoresOrder->filter(function ($score, $key) {return $score->benefice > 0;})->count() / $scoresOrder->count() *100) }}%</td>
+                </tr>
+                <tr>
+                    <td><b>Parties perdantes</b></td>
+                    <td class="text-center"><b>{{ $scoresOrder->filter(function ($score, $key) {return $score->benefice < 0;})->count() }} </b> / {{ round($scoresOrder->filter(function ($score, $key) {return $score->benefice < 0;})->count() / $scoresOrder->count() *100) }}%</b></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+@endsection
+
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading"><b class="text-muted">Dashboard</b></div>
@@ -137,25 +180,25 @@
 @endsection
 
 @section('rightSideContent')
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="panel-title">
-            <b class="text-muted">5 last Game</b>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <b class="text-muted">5 last Game</b>
+            </div>
         </div>
+
+        <div id="last5GamesColumnChart" class="panel-body"></div>
     </div>
 
-    <div id="last5GamesColumnChart" class="panel-body"></div>
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="panel-title">
-            <b class="text-muted">Win / Lost</b>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <b class="text-muted">Win / Lost</b>
+            </div>
         </div>
-    </div>
 
-    <div id="winLostDonutChart" class="panel-body"></div>
-</div>
+        <div id="winLostDonutChart" class="panel-body"></div>
+    </div>
 @endsection
 
 @push('scripts')
