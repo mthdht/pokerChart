@@ -127,7 +127,7 @@
                 <div class="panel-heading">
                     <div class="panel-title text-center">
                         <b class="col-xs-8 ">Bénéfice par partie </b>
-                        <a href="{{ route('scores.index') }}" class="btn btn-info"> Voir les scores</a>
+                        <a href="{{ route('scores.index') }}" class="btn btn-default"> Voir les scores</a>
                     </div>
                 </div>
 
@@ -140,7 +140,7 @@
                 <div class="panel-heading">
                     <div class="panel-title text-center">
                         <b class="col-xs-8 "> 5 dernières parties </b>
-                        <a href="{{ route('scores.index') }}" class="btn btn-info"> Voir les scores</a>
+                        <a href="{{ route('scores.index') }}" class="btn btn-default"> Voir les scores</a>
                     </div>
                 </div>
 
