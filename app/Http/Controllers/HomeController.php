@@ -40,7 +40,15 @@ class HomeController extends Controller
         foreach ($scoresOrder->values() as $key => $score) {
             $beneficesPerPartie[++$key] = [$score->datePartie, (int)$score->benefice];
         }
+
+
         // return the home view with all datas for display and charts
-        return view('home', ['lastGameData' => json_encode($lastGameData), 'winLostData'=>json_encode($winLostData), 'beneficesPerPartie' => json_encode($beneficesPerPartie), 'lastScores' => $lastScores, ]);
+        return view('home', array(
+            'lastGameData' => json_encode($lastGameData),
+            'winLostData'=>json_encode($winLostData),
+            'beneficesPerPartie' => json_encode($beneficesPerPartie),
+            'lastScores' => $lastScores,
+            'scoresOrder' => $scoresOrder,
+        ));
     }
 }
