@@ -34,7 +34,12 @@ class HomeController extends Controller
                     $lastGameData[++$key] = [$score->datePartie, (int)$score->mise, (int)$score->gains];
         }
         // prepare data for win / lost donut chart
-        $winLostData = [['win/lost', 'value'], ['Mise', $scoresOrder->sum('mise')], ['Gains', $scoresOrder->sum('gains')]];
+        $winLostData = [
+            ['win/lost', 'value'],
+            ['Parties gagnantes', $scoresOrder->filter(function ($score, $key) {return $score->benefice > 0;})->count()],
+            ['Parties perdantes', $scoresOrder->filter(function ($score, $key) {return $score->benefice < 0;})->count()],
+            ['Parties nulle', $scoresOrder->filter(function ($score, $key) {return $score->benefice == 0;})->count()]
+        ];
         // prepare data for benefice per partie chart
         $beneficesPerPartie[] = ['date Partie', 'Bénéfices'];
         foreach ($scoresOrder->values() as $key => $score) {
