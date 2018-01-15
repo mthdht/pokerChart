@@ -61,7 +61,7 @@ class ScoreController extends Controller
         $score = new Score($request->all());
         \Auth::user()->scores()->save($score);
 
-        return redirect(route('scores.index'));
+        return redirect(route('home'));
     }
 
     /**
