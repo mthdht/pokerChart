@@ -31,7 +31,7 @@
                     </tr>
                     <tr>
                         <td><b>Meilleur gain</b></td>
-                        <td class="text-center"><b>{{ $scoresOrder->max('gains') }} <i class="fa fa-eur" aria-hidden="true"></i></b></td>
+                        <td class="text-center"><b>{{ $scoresOrder->max('Gains') }} <i class="fa fa-eur" aria-hidden="true"></i></b></td>
                     </tr>
                     <tr>
                         <td><b>Pire perte</b></td>
@@ -124,7 +124,7 @@
 
                                     <span class="col-xs-7 ">
                                     <b>Ratio<br>
-                                        {{ round($scoresOrder->sum('gains') / $scoresOrder->sum('mise'), 2) }}
+                                        {{ round($scoresOrder->sum('Gains') / $scoresOrder->sum('mise'), 2) }}
                                         <i class="fa " aria-hidden="true"></i></b>
                                 </span>
                                 </div>
@@ -175,7 +175,7 @@
                                         <td>{{ $score->id }}</td>
                                         <td>{{ $score->buyIn }}</td>
                                         <td>{{ $score->mise }}</td>
-                                        <td>{{ $score->gains }}</td>
+                                        <td>{{ $score->Gains }}</td>
                                         <td>{{ $score->benefice }}</td>
                                         <td>{{ $score->recave }}</td>
                                         <td>{{ $score->datePartie }}</td>
@@ -300,15 +300,15 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('gains') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('Gains') ? ' has-error' : '' }}">
                     <label for="buyIn" class="col-md-4 control-label">Gains</label>
 
                     <div class="col-md-6">
-                        <input id="gains" type="number" class="form-control" name="gains" value="{{ old('gains') }}" required >
+                        <input id="gains" type="number" class="form-control" name="gains" value="{{ old('Gains') }}" required >
 
-                        @if ($errors->has('gains'))
+                        @if ($errors->has('Gains'))
                             <span class="help-block">
-                            <strong>{{ $errors->first('gains') }}</strong>
+                            <strong>{{ $errors->first('Gains') }}</strong>
                         </span>
                         @endif
                     </div>

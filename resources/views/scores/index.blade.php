@@ -55,7 +55,7 @@
                             <td>{{ $score->id }}</td>
                             <td>{{ $score->buyIn }}</td>
                             <td>{{ $score->mise }}</td>
-                            <td>{{ $score->gains }}</td>
+                            <td>{{ $score->Gains }}</td>
                             <td>{{ $score->benefice }}</td>
                             <td>{{ $score->recave }}</td>
                             <td>{{ $score->datePartie }}</td>

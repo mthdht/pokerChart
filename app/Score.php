@@ -31,7 +31,7 @@ class Score extends Model
      */
     public function getBeneficeAttribute()
     {
-        return $this->gains - $this->mise;
+        return $this->Gains - $this->mise;
     }
 
     /**

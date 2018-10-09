@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+{{$score}}
     <div class="panel panel-default">
         <h2 class="panel-heading "><span class="text-muted"><b>Ton score, partie du {{ $score->datePartie }}!</b></span> </h2>
 
@@ -20,7 +20,7 @@
                     <div class="clearfix"></div>
                     <div>
                         <label class="col-xs-5 ">Gains</label>
-                        <p class="col-xs-7 text-right">{{ $score->gains }}</p>
+                        <p class="col-xs-7 text-right">{{ $score->Gains }}</p>
                     </div>
                     <div class="clearfix"></div>
                     <div>
